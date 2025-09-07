@@ -3,17 +3,17 @@
 Microservicio de **autenticación y autorización** basado en Spring Boot y JWT.  
 Forma parte del sistema **Order Management System**.
 
----
+**Función principal: autenticar y registrar usuarios, emitir tokens.**
 
-## Tecnologías
-- Java 17
-- Spring Boot 3
-- Spring Security + JWT
-- Spring Data JPA
-- MySQL
-- OpenFeign (para comunicación con otros microservicios)
+- Entradas: datos de registro (username, email, password) o login (username, password) desde el frontend.
 
----
+- Salidas: JWT válido o error de autenticación.
+
+Cómo afecta a los otros microservicios:
+
+Todos los requests a orderservice y productservice requieren que el frontend envíe un JWT generado por authservice.
+
+Otros microservicios no conocen la contraseña ni gestionan usuarios, solo confían en el JWT.
 
 ##  Funcionalidad
 - Registro de usuarios (`/api/auth/register`)
